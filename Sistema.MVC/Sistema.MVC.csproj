@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
+    <PackageReference Include="jsreport.Local" Version="3.8.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.4.0" />
+    <PackageReference Include="Rotativaio.AspNetCore" Version="1.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alertas.Modelos\Alertas.Modelos.csproj" />
+    <ProjectReference Include="..\APIConsumer\APIConsumer.csproj" />
+    <ProjectReference Include="..\Logs.API\Logs.API.csproj" />
+    <ProjectReference Include="..\Sistema.Modelos\Sistema.Modelos.csproj" />
+    <ProjectReference Include="..\SistemaGestionPostgress.API\SistemaGestionFlota.API.csproj" />
+  </ItemGroup>
+
+</Project>
