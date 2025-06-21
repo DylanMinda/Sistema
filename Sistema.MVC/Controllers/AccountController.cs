@@ -21,19 +21,20 @@ namespace Sistema.MVC.Controllers
         // Método POST: Maneja el inicio de sesión
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(Usuario usuario)
+        public async Task<IActionResult> Login(Usuario usuario)
         {
-            // Buscar al usuario en la "base de datos" (lista simulada)
             var usuarioValido = usuarios.FirstOrDefault(u => u.Email == usuario.Email && u.Contraseña == usuario.Contraseña);
 
             if (usuarioValido != null)
             {
-                // Si el usuario es válido, redirigir a la página principal
+                // Guardamos en la sesión que el usuario ha iniciado sesión
+                HttpContext.Session.SetString("UserEmail", usuario.Email);
+
+                // Redirigimos al usuario a la página principal
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                // Si las credenciales son incorrectas, mostrar un mensaje de error
                 ViewData["ErrorMessage"] = "Correo electrónico o contraseña incorrectos.";
                 return View();
             }

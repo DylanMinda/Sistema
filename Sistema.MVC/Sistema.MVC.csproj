@@ -19,7 +19,7 @@
     <ProjectReference Include="..\APIConsumer\APIConsumer.csproj" />
     <ProjectReference Include="..\Logs.API\Logs.API.csproj" />
     <ProjectReference Include="..\Sistema.Modelos\Sistema.Modelos.csproj" />
-    <ProjectReference Include="..\SistemaGestionPostgress.API\SistemaGestionFlota.API.csproj" />
+    <ProjectReference Include="..\SistemaGestion.API\SistemaGestionFlota.API.csproj" />
   </ItemGroup>
 
 </Project>

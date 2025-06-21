@@ -2,10 +2,6 @@ using Alertas.Modelos;
 using APIConsumer;
 using Microsoft.EntityFrameworkCore;
 using Sistema.Modelos;
-using DinkToPdf;
-using DinkToPdf.Contracts;
-
-
 
 
 public class Program
@@ -23,15 +19,23 @@ public class Program
 
         var builder = WebApplication.CreateBuilder(args);
 
-      
+        // Configuración de las sesiones
+        builder.Services.AddDistributedMemoryCache();  // Necesario para almacenar la sesión en memoria
+        builder.Services.AddSession(options => {
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
+
         builder.Services.AddControllersWithViews();
-        builder.Services.AddSingleton<IConverter, SynchronizedConverter>(provider =>
-    new SynchronizedConverter(new PdfTools()));
+
         var app = builder.Build();
+
+        // Habilitar el middleware de sesión
+        app.UseSession();
+
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
 
